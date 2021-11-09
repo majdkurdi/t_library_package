@@ -4,7 +4,7 @@ import 'package:http/http.dart' as http;
 import 'package:http_interceptor/http_interceptor.dart';
 import './http_interceptor.dart';
 
-const String baseUrl = 'http://10.0.2.2:8000/api';
+const String baseUrl = 'http://192.168.137.1:8000/api';
 
 final client = InterceptedClient.build(
   interceptors: [AuthorizationInterceptor()],

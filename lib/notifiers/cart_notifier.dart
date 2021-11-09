@@ -20,6 +20,10 @@ class CartNotifier extends ChangeNotifier {
   //   return _instance!;
   // }
 
+  // Future getCart() async {
+  //   cart = await _booksService.getCart();
+  // }
+
   Future addToCart(Book book) async {
     final added = await _booksService.addBookToCart(CartItem.fromBook(book));
     if (added) {

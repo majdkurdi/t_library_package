@@ -20,7 +20,7 @@ class UserService {
       required String address,
       required String phoneNumber}) async {
     try {
-      final response = await put('/user/update/me', body: {
+      final response = await post('/user/update', body: {
         "name": name,
         "phone_number": phoneNumber,
         "address": address

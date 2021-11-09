@@ -114,9 +114,17 @@ class BooksNotifier extends ChangeNotifier {
     }
   }
 
-  Future<void> toggleFavorite(Book book) async {
+  Future<String> toggleFavorite(Book book) async {
     try {
       await _bookService.toggleFavorite(book);
-    } on Exception catch (_) {}
+      if (favorites.contains(book)) {
+        favorites.remove(book);
+      } else {
+        favorites.add(book);
+      }
+      return 'done';
+    } on Exception catch (_) {
+      return 'error';
+    }
   }
 }

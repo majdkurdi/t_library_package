@@ -40,6 +40,15 @@ class BooksService {
     }
   }
 
+  // Future<List<Book>> getCart() async {
+  //   try {
+  //     final response = await http.get('/getCart');
+  //     return ;
+  //   } on Exception catch (_) {
+  //     rethrow;
+  //   }
+  // }
+
   Future rateBook({required int bookId, required int rate}) async {
     try {
       await http.post('/book/$bookId/rate', body: {'rate': '$rate'});
@@ -120,7 +129,7 @@ class BooksService {
 
   Future<List<Book>> getFavorites() async {
     try {
-      final response = await http.get('');
+      final response = await http.get('/book/getFavoriteBook');
       return bookFromJson(response.body);
     } on Exception catch (e) {
       print(e);
@@ -130,10 +139,16 @@ class BooksService {
 
   Future<void> toggleFavorite(Book book) async {
     try {
-      final response = await http.post('', body: {});
+      final response = await http.post('/book/${book.id}/favorite/add');
     } on Exception catch (e) {
       print(e);
       rethrow;
     }
   }
+
+  // Future<Book> addBook(Book book) async {
+  //   final response = await http.post('/book', body: {
+
+  //   });
+  // }
 }
